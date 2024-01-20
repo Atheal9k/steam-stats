@@ -125,7 +125,7 @@ export const UserInfo = () => {
               <p className="text-[1rem]">
                 {userData?.personaname
                   ? userData?.personaname
-                  : "Data is Private"}
+                  : "Data is Private"}{" "}
                 • All Games Total Playtime,{" "}
                 {recordData?.totalAcrossGameTime
                   ? recordData.totalAcrossGameTime
