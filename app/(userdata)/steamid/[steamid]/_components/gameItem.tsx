@@ -4,7 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useGetData } from "@/hooks/useGetData";
+import { getDataFromSteam } from "@/lib/getDataFromSteam";
 
 interface Game {
   appid: string;
@@ -25,7 +25,10 @@ const GameItem = () => {
     if (steamid) {
       const getData = async () => {
         try {
-          const response = await useGetData(steamid, "getSteamGamesOwned");
+          const response = await getDataFromSteam(
+            steamid,
+            "getSteamGamesOwned"
+          );
 
           if (axios.isAxiosError(response)) {
             setIsPrivate(true);

@@ -1,5 +1,5 @@
 "use client";
-import { useGetData } from "@/hooks/useGetData";
+import { getDataFromSteam } from "@/lib/getDataFromSteam";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -32,9 +32,9 @@ export const UserInfo = () => {
       const getData = async () => {
         try {
           loadingStore.setLoading(true);
-          const userdata = await useGetData(steamid, "getUserInfo");
+          const userdata = await getDataFromSteam(steamid, "getUserInfo");
 
-          const gameData = await useGetData(steamid, "getSteamGamesData");
+          const gameData = await getDataFromSteam(steamid, "getSteamGamesData");
 
           if (axios.isAxiosError(gameData) || axios.isAxiosError(userdata)) {
             setIsDataPrivate(true);
